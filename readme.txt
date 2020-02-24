@@ -1,8 +1,8 @@
-=== Add Script To Post ===
-Contributors: Second Street (Heather McCarron)
+=== Second Street ===
+Contributors: Second Street
 Tags: Page, Post, Shortcode, Promotion, Second Street, UPICKEM
 Requires at least: 3.0
-Tested up to: 3.9.2
+Tested up to: 4.7
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,10 +12,7 @@ Embed your Second Street Promotion on a WordPress page using the Shortcode gener
 
 == Description ==
 
-The Second Street Promotion Plugin will allow you to embed your Second Street Promotion within your WordPress site. The feature to generate the Shortcode required for this plugin is located within your promotion's [Second Street Partner Tool](https://affiliates.upickem.net). After retrieving your Promotion's Shortcode, you will paste it into the page content area of the WordPress page you would like it to appear on.
-
-NOTE: The embedded Promotion's width will be dependent on the size of the parent container/element that it is placed in. If your promotion appears too narrow or too wide, try adjusting the width of its container.
-
+The Second Street Plugin allows you to embed your Second Street content on your WordPress site. Get the Shortcode the specific Contest, Interactive Content, or Signup Widget you would like to embed from the Second Street app at [partners.secondstreet.com](https://partners.secondstreet.com). After retrieving your  Shortcode, paste it into the page content area of the WordPress page you would like it to appear on.
 
 == Installation ==
 
@@ -24,7 +21,7 @@ NOTE: The embedded Promotion's width will be dependent on the size of the parent
    to the `/wp-content/plugins/` directory.
 3. Activate the plugin through the 'Plugins' menu in WordPress.
 4. Retrieve (copy) your Promotion's Shortcode from your Second Street Partner Tool. 
-   (Login to your Second Street account at https://affiliates.upickem.net) 
+   (Login to your Second Street account at https://partners.secondstreet.com/) 
 5. Place (paste) your Shortcode into the page content area in your WordPress site. 
 
 
@@ -39,3 +36,6 @@ If you are having problems activating your plugin, please contact Second Street'
 
 = 2.1.0 =
 * Support for ss-promo, ss-signup, and ss-contest shortcodes
+
+= 2.2.0 =
+* Support for contest_id attribute for ss-contest shortcode
