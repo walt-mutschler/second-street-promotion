@@ -48,7 +48,6 @@ function ss_promo_func( $atts, $content = null ) {
 	return '<script src="' . esc_url( $ss_script_url ) . '" data-ss-embed="promotion" data-opguid="' . esc_attr( $a['op_guid'] ) . '" data-routing="' . esc_attr( $a['routing'] ) . '"></script>';
 
 }
-add_shortcode( 'ss-promo', 'ss_promo_func' );
 
 // [ss-signup] Code
 function ss_signup_func( $atts, $content = null ) {
@@ -61,10 +60,6 @@ function ss_signup_func( $atts, $content = null ) {
 	return '<script src="' . esc_url( $ss_script_url ) . '" data-ss-embed="optin" data-design-id="' . esc_attr( $a['design_id'] ) . '"></script>';
 
 }
-
-add_shortcode( 'ss-promo', 'ss_promo_func' );
-add_shortcode( 'ss-signup', 'ss_signup_func' );
-
 
 // [ss-contest] Code
 function ss_contest_func( $atts, $content = null ) {
@@ -100,8 +95,23 @@ function ss_feed_func( $atts, $content = null ) {
 	return '<script src="' . esc_url( $ss_script_url ) . '" data-ss-embed="feed" data-organization-id="' . $a['organization_id'] . '"></script>';
 }
 
+// [ss-preferences] Code
+function ss_preferences_func( $atts, $content = null ) {
+	if (empty($atts['organization_id'])) {
+		return 'Error: No organization_id parameter defined on the shortcode.';
+	}
+
+	$a = shortcode_atts( array (
+		'organization_id' => '',
+	), $atts );
+
+	$ss_script_url = 'https://embed.secondstreetapp.com/Scripts/dist/preferences.js';
+
+	return '<script src="' . esc_url( $ss_script_url ) . '" data-ss-embed="preferences" data-organization-id="' . esc_attr( $a['organization_id'] ) . '"></script>';
+}
+
 add_shortcode( 'ss-promo', 'ss_promo_func' );
 add_shortcode( 'ss-signup', 'ss_signup_func' );
-
 add_shortcode( 'ss-contest', 'ss_contest_func' );
 add_shortcode( 'ss-feed', 'ss_feed_func' );
+add_shortcode( 'ss-preferences', 'ss_preferences_func' );
