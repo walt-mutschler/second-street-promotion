@@ -1,9 +1,8 @@
 name: Deploy Wordpress Plugin
 
 on: 
-  push:
-    branches:
-      - master
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -18,4 +17,4 @@ jobs:
       env:
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-        VERSION: 3.1.0
+        VERSION: 3.1.1
