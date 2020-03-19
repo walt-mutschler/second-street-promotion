@@ -7,4 +7,4 @@ When making a contribution, be sure to bump the versions in:
   - `.github/workflows/main.yml`
   - `secondstreet-promotion.php`
 
-  _**Before**_ a merge to master is made, a release for the contribution will need to be cut. We use Semantic Versioning for our releases. Use a different name for every Major Version (our naming scheme is environmentally-friendly technologies).
+  _**After**_ a merge to master is made, a release for the contribution will need to be cut. We use Semantic Versioning for our releases. Use a different name for every Major Version (our naming scheme is environmentally-friendly technologies).
