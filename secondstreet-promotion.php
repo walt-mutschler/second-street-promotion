@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Second Street
  * Description: Plugin will allow Second Street Affiliates to embed a Second Street Promotion within their WordPress site(s).
- * Version: 3.1.2
+ * Version: 3.1.3
  * Author: Second Street
  * Author URI: http://secondstreet.com
  * License: GPL2
@@ -40,13 +40,18 @@ function ss_promo_func( $atts, $content = null ) {
 	$a = shortcode_atts( array (
 			'op_id' => '',
 			'op_guid' => '',
-			'routing' => ''
+			'routing' => '',
+			'dev' => ''
 		), $atts );
 
-	$ss_script_url = 'https://embed-' . $a['op_id'] . '.secondstreetapp.com/Scripts/dist/embed.js';
+	$ss_script_url_prefix = 'https://embed' . $a['op_id'];
+	$ss_script_url_suffix = '.secondstreetapp.com/Scripts/dist/embed.js';
 
-	return '<script src="' . esc_url( $ss_script_url ) . '" data-ss-embed="promotion" data-opguid="' . esc_attr( $a['op_guid'] ) . '" data-routing="' . esc_attr( $a['routing'] ) . '"></script>';
-
+	if ( $a['dev'] === 'true' ) {
+		return '<script src="' . esc_url( $ss_script_url_prefix . 'dev' . $ss_script_url_suffix ) . '" data-ss-embed="feed" data-organization-id="' . $a['organization_id'] . '"></script>';
+	} else {
+		return '<script src="' . esc_url( $ss_script_url_prefix . '-' . $a['op_id'] . $ss_script_url_suffix ) . '" data-ss-embed="promotion" data-opguid="' . esc_attr( $a['op_guid'] ) . '" data-routing="' . esc_attr( $a['routing'] ) . '"></script>';
+	}
 }
 
 // [ss-signup] Code
@@ -88,11 +93,17 @@ function ss_feed_func( $atts, $content = null ) {
 	
 	$a = shortcode_atts( array (
 		'organization_id' => '',
+		'dev' => ''
 	), $atts );
 
-	$ss_script_url = 'https://o-' . $a['organization_id'] . '.secondstreetapp.com/Scripts/dist/feed.js';
+	$ss_script_url_prefix = 'https://o-' . $a['organization_id'];
+	$ss_script_url_suffix = '.secondstreetapp.com/Scripts/dist/feed.js';
 
-	return '<script src="' . esc_url( $ss_script_url ) . '" data-ss-embed="feed" data-organization-id="' . $a['organization_id'] . '"></script>';
+	if ( $a['dev'] === 'true' ) {
+		return '<script src="' . esc_url( $ss_script_url_prefix . '.dev' . $ss_script_url_suffix ) . '" data-ss-embed="feed" data-organization-id="' . $a['organization_id'] . '"></script>';
+	} else {
+		return '<script src="' . esc_url( $ss_script_url_prefix . $ss_script_url_suffix ) . '" data-ss-embed="feed" data-organization-id="' . $a['organization_id'] . '"></script>';
+	}
 }
 
 // [ss-preferences] Code
